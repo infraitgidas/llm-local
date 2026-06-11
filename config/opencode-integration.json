@@ -1,0 +1,21 @@
+# Configuración de OpenCode para usar el stack local
+# Copiar a ~/.config/opencode/opencode.json o mergear con el existente
+
+{
+  "models": [
+    {
+      "name": "qwen-local",
+      "provider": "openai",
+      "baseURL": "http://localhost:11434/v1",
+      "apiKey": "no-key-needed",
+      "model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "name": "qwen-local-3b",
+      "provider": "openai",
+      "baseURL": "http://localhost:11434/v1",
+      "apiKey": "no-key-needed",
+      "model": "qwen2.5-coder:3b"
+    }
+  ]
+}
