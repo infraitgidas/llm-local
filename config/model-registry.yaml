@@ -1,0 +1,38 @@
+# config/model-registry.yaml — Registry of available models
+#
+# Each model entry includes:
+#   name:        Model identifier for Ollama or GGUF path
+#   type:        ollama | gguf
+#   quantization: Quantization format
+#   vram_gb:     Estimated VRAM usage
+#   ram_gb:      Estimated RAM usage
+#   profiles:    Compatible task profiles
+#   fallback:    Fallback model if OOM
+
+models:
+  - name: qwen2.5-coder:1.5b
+    type: ollama
+    quantization: Q4_K_M
+    vram_gb: 1.0
+    ram_gb: 2.0
+    tok_per_sec: 15-25
+    profiles: [git, code, review]
+    fallback: null
+
+  - name: qwen2.5-coder:3b
+    type: ollama
+    quantization: Q4_K_M
+    vram_gb: 1.8
+    ram_gb: 2.5
+    tok_per_sec: 10-15
+    profiles: [infra, doc, proxmox, code]
+    fallback: qwen2.5-coder:1.5b
+
+  - name: nomic-embed-text
+    type: ollama
+    quantization: Q8_0
+    vram_gb: 0.3
+    ram_gb: 0.5
+    tok_per_sec: null
+    profiles: [rag, embeddings]
+    fallback: null
