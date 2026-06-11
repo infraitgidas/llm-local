@@ -26,18 +26,18 @@ Chain strategy: pending
 
 ## Phase 1: Stack Base (Ollama + Vulkan)
 
-- [ ] T1: Create `scripts/stack-setup.sh` — install Ollama + Vulkan SDK, verify daemon on :11434
-- [ ] T2: Download Qwen2.5-Coder-1.5B Q4_K_M via Ollama
-- [ ] T3: Smoke test — `curl :11434/api/generate` responde <5s con código válido
-- [ ] T4: Create `config/git.yaml` + `config/system-prompts/git-commit.md` + git-pr.md
-- [ ] T5: Test git-assist — empty diff error, staged diff genera conventional commit
+- [x] T1: Create `scripts/stack-setup.sh` — install Ollama + Vulkan SDK, verify daemon on :11434
+- [x] T2: Download Qwen2.5-Coder-1.5B Q4_K_M via Ollama
+- [x] T3: Smoke test — `curl :11434/api/generate` responde <5s con código válido
+- [x] T4: Create `config/git.yaml` + `config/system-prompts/git-commit.md` + git-pr.md
+- [x] T5: Test git-assist — empty diff error, staged diff genera conventional commit
 
 ## Phase 2: ROCm/HIP Optimization (llama.cpp)
 
-- [ ] T6: Create `scripts/llama.cpp-build.sh` — build llama.cpp con HIP/gfx803, fallback Vulkan
-- [ ] T7: Create `scripts/llama.cpp-serve.sh` + `scripts/switch-backend.sh` — switch backend mismo puerto
-- [ ] T8: Create `scripts/benchmark.sh` — tok/s, TTFT, RAM/VRAM peak (3 corridas)
-- [ ] T9: Decision gate — si ROCm <20% faster que Vulkan, mantener Ollama como default
+- [x] T6: Create `scripts/llama.cpp-build.sh` — build llama.cpp con HIP/gfx803, fallback Vulkan
+- [x] T7: Create `scripts/llama.cpp-serve.sh` + `scripts/switch-backend.sh` — switch backend mismo puerto
+- [x] T8: Create `scripts/benchmark.sh` — tok/s, TTFT, RAM/VRAM peak (3 corridas)
+- [x] T9: Decision gate — ROCm no compila, llama.cpp+Vulkan 9.7x faster que Ollama CPU → migrar a llama.cpp default
 
 ## Phase 3: Multi-model + RAG
 

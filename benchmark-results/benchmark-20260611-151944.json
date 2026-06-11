@@ -1,0 +1,43 @@
+[
+  {
+    "backend": "ollama",
+    "model": "qwen2.5-coder:1.5b",
+    "round": 1,
+    "prompt": "Write a Python function for Fibonacci sequence with comments.",
+    "prompt_tok_per_sec": 101.5,
+    "gen_tok_per_sec": 8.8,
+    "tokens_generated": 256,
+    "success": true
+  },
+  {
+    "backend": "ollama",
+    "model": "qwen2.5-coder:1.5b",
+    "round": 2,
+    "prompt": "Explain TCP vs UDP differences.",
+    "prompt_tok_per_sec": 158.1,
+    "gen_tok_per_sec": 8.9,
+    "tokens_generated": 256,
+    "success": true
+  },
+  {
+    "backend": "ollama",
+    "model": "qwen2.5-coder:1.5b",
+    "round": 3,
+    "prompt": "Write a bash script to monitor CPU and memory.",
+    "prompt_tok_per_sec": 123.1,
+    "gen_tok_per_sec": 8.8,
+    "tokens_generated": 256,
+    "success": true
+  },
+  {
+    "backend": "llama.cpp",
+    "model": "qwen2.5-coder-1.5b-q4_k_m.gguf",
+    "round": 1,
+    "prompt_tok_per_sec": 767.81,
+    "gen_tok_per_sec": 85.28,
+    "tokens_generated": 128,
+    "pp512": 767.81,
+    "tg128": 85.28,
+    "success": true
+  }
+]
