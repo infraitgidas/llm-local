@@ -1,0 +1,37 @@
+# Model files
+models/*.gguf
+models/*.bin
+!models/.gitkeep
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Tooling
+node_modules/
+*.swp
+*.swo
+
+# Data / cache
+data/cache/
+data/logs/
+
+# Build artifacts
+build/
+dist/
+*.tar.gz
+
+# Keep the rag-index structure but not the content
+docs/rag-index/*
+!docs/rag-index/.gitkeep
