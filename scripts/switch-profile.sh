@@ -100,7 +100,7 @@ load_profile() {
     if command -v ollama &>/dev/null; then
         info "Testing model ${model}..."
         local test_result
-        test_result=$(curl -s -o /dev/null -w "%{http_code}" \
+        test_result=$(curl -s --max-time 30 -o /dev/null -w "%{http_code}" \
             -X POST http://localhost:11434/api/generate \
             -d "{\"model\":\"${model}\",\"prompt\":\"OK\",\"stream\":false,\"options\":{\"num_predict\":1}}" 2>/dev/null || echo "000")
         
@@ -111,7 +111,7 @@ load_profile() {
             if pgrep -x ollama >/dev/null; then
                 warn "Ollama running but not responding. Retrying..."
                 sleep 2
-                test_result=$(curl -s -o /dev/null -w "%{http_code}" \
+                test_result=$(curl -s --max-time 30 -o /dev/null -w "%{http_code}" \
                     -X POST http://localhost:11434/api/generate \
                     -d "{\"model\":\"${model}\",\"prompt\":\"OK\",\"stream\":false,\"options\":{\"num_predict\":1}}" 2>/dev/null || echo "000")
             fi
@@ -151,7 +151,7 @@ unload_current() {
             info "Unloading previous model: ${old_model}"
             # Send a request to unload (Ollama keeps models loaded for 5 minutes by default)
             # Force unload by sending a request to a non-existent model
-            curl -s -X POST http://localhost:11434/api/generate \
+            curl -s --max-time 10 -X POST http://localhost:11434/api/generate \
                 -d "{\"model\":\"_unload\",\"prompt\":\"\",\"stream\":false}" >/dev/null 2>&1 || true
             sleep 1
         fi
