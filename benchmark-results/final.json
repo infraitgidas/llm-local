@@ -1,0 +1,202 @@
+{
+  "benchmark": "final",
+  "timestamp": "2026-06-11T16:24:47-0300",
+  "host": "37709.gidas",
+  "gpu": "AMD Radeon RX 580 2048SP (Vulkan)",
+  "system": {
+    "ram_total_gb": 7.5,
+    "ram_idle_mb": 5678,
+    "ram_load_mb": 5678,
+    "vram_total_mb": 8192,
+    "vram_idle_mb": 868,
+    "vram_load_mb": 868
+  },
+  "available_models": [
+    {
+      "name": "qwen2.5-coder:1.5b",
+      "size_gb": 0.986,
+      "quantization": "Q4_K_M",
+      "backend": "ollama",
+      "tok_per_sec_avg": 9.7
+    },
+    {
+      "name": "qwen2.5-coder:3b",
+      "size_gb": 1.9,
+      "quantization": "Q4_K_M",
+      "backend": "ollama",
+      "tok_per_sec_avg": 5.2
+    },
+    {
+      "name": "nomic-embed-text",
+      "size_gb": 0.274,
+      "quantization": "F16",
+      "backend": "ollama",
+      "purpose": "embeddings"
+    }
+  ],
+  "llama_cpp_vulkan_reference": {
+    "model": "qwen2.5-coder-1.5b-q4_k_m.gguf",
+    "tok_per_sec": 85.28,
+    "reference": "benchmark-results/benchmark-20260611-151944.json",
+    "note": "Previous benchmark Phase 2 \u2014 9.7x faster than Ollama CPU"
+  },
+  "profiles": [
+    {
+      "name": "git",
+      "model": "qwen2.5-coder:1.5b",
+      "temperature": 0.2,
+      "system_prompt": "config/system-prompts/git-commit.md"
+    },
+    {
+      "name": "infra",
+      "model": "qwen2.5-coder:3b",
+      "temperature": 0.2,
+      "system_prompt": "config/system-prompts/infra-agent.md"
+    },
+    {
+      "name": "doc",
+      "model": "qwen2.5-coder:3b",
+      "temperature": 0.4,
+      "system_prompt": "config/system-prompts/documentation.md"
+    },
+    {
+      "name": "proxmox",
+      "model": "qwen2.5-coder:3b",
+      "temperature": 0.2,
+      "system_prompt": "config/system-prompts/infra-agent.md",
+      "rag_index": "rag-index/docs.json"
+    }
+  ],
+  "llm_benchmarks": [
+    {
+      "backend": "ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "prompt_preview": "Write a Python function for Fibonacci sequence with comments",
+      "tokens_generated": 128,
+      "tok_per_sec": 9.7,
+      "ttft_ms": 306.0,
+      "ram_delta_mb": 30,
+      "vram_delta_mb": 4,
+      "ram_idle_mb": 5395,
+      "ram_load_mb": 5425,
+      "success": true
+    },
+    {
+      "backend": "ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "prompt_preview": "Explain the difference between TCP and UDP in networking.",
+      "tokens_generated": 128,
+      "tok_per_sec": 9.7,
+      "ttft_ms": 268.0,
+      "ram_delta_mb": 5,
+      "vram_delta_mb": 0,
+      "ram_idle_mb": 5425,
+      "ram_load_mb": 5430,
+      "success": true
+    },
+    {
+      "backend": "ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "prompt_preview": "Write a bash script to monitor CPU and memory usage.",
+      "tokens_generated": 128,
+      "tok_per_sec": 9.7,
+      "ttft_ms": 358.0,
+      "ram_delta_mb": 26,
+      "vram_delta_mb": -4,
+      "ram_idle_mb": 5431,
+      "ram_load_mb": 5457,
+      "success": true
+    },
+    {
+      "backend": "ollama",
+      "model": "qwen2.5-coder:3b",
+      "prompt_preview": "Write a Python function for Fibonacci sequence with comments",
+      "tokens_generated": 128,
+      "tok_per_sec": 5.2,
+      "ttft_ms": 652.0,
+      "ram_delta_mb": -14,
+      "vram_delta_mb": 0,
+      "ram_idle_mb": 5457,
+      "ram_load_mb": 5443,
+      "success": true
+    },
+    {
+      "backend": "ollama",
+      "model": "qwen2.5-coder:3b",
+      "prompt_preview": "Explain the difference between TCP and UDP in networking.",
+      "tokens_generated": 128,
+      "tok_per_sec": 5.1,
+      "ttft_ms": 466.0,
+      "ram_delta_mb": 14,
+      "vram_delta_mb": 0,
+      "ram_idle_mb": 5443,
+      "ram_load_mb": 5457,
+      "success": true
+    },
+    {
+      "backend": "ollama",
+      "model": "qwen2.5-coder:3b",
+      "prompt_preview": "Write a bash script to monitor CPU and memory usage.",
+      "tokens_generated": 128,
+      "tok_per_sec": 5.2,
+      "ttft_ms": 505.0,
+      "ram_delta_mb": 9,
+      "vram_delta_mb": 0,
+      "ram_idle_mb": 5457,
+      "ram_load_mb": 5466,
+      "success": true
+    }
+  ],
+  "rag_benchmarks": [
+    {
+      "test": "rag-query",
+      "query_preview": "c\u00f3mo crear una VM con 2 cores y 4GB RAM",
+      "latency_ms": 166,
+      "top_score": 0.549,
+      "results_count": 3,
+      "success": true
+    },
+    {
+      "test": "rag-query",
+      "query_preview": "how to check service status with systemd",
+      "latency_ms": 189,
+      "top_score": 0.597,
+      "results_count": 3,
+      "success": true
+    },
+    {
+      "test": "rag-query",
+      "query_preview": "how to backup all VMs in proxmox",
+      "latency_ms": 155,
+      "top_score": 0.702,
+      "results_count": 3,
+      "success": true
+    }
+  ],
+  "rag_index": {
+    "path": "rag-index/docs.json",
+    "chunks": 8,
+    "source_files": [
+      "docs/proxmox-basics.md",
+      "docs/infra-basics.md"
+    ]
+  },
+  "summary": {
+    "qwen2.5coder_1.5b_avg_tps": 9.7,
+    "qwen2.5coder_1.5b_avg_ttft_ms": 311.0,
+    "qwen2.5coder_1.5b_avg_ram_mb": 20.0,
+    "qwen2.5coder_3b_avg_tps": 5.2,
+    "qwen2.5coder_3b_avg_ttft_ms": 541.0,
+    "qwen2.5coder_3b_avg_ram_mb": 3.0,
+    "ram_usage_pct": 75.7,
+    "vram_usage_pct": 10.6,
+    "swap_used_mb": 2558,
+    "constraints": [
+      "Swap usage 2558MB \u2014 possible memory pressure"
+    ],
+    "constraints_ok": false,
+    "rag_avg_latency_ms": 170.0,
+    "rag_queries_total": 3,
+    "rag_queries_success": 3
+  }
+}

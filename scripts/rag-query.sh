@@ -23,8 +23,8 @@ BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-info()    { echo -e "${GREEN}[INFO]${NC} $*"; }
-error()   { echo -e "${RED}[ERROR]${NC} $*"; }
+info()    { echo -e "${GREEN}[INFO]${NC} $*" >&2; }
+error()   { echo -e "${RED}[ERROR]${NC} $*" >&2; }
 
 # The query logic in Python
 run_query() {
