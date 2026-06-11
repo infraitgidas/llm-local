@@ -1,0 +1,9 @@
+# config/infra.yaml — Infra agent profile for local inference stack
+# Loaded by scripts/switch-profile.sh
+# System prompt: config/system-prompts/infra-agent.md
+
+profile: infra
+model: qwen2.5-coder:3b
+temperature: 0.2
+context_length: 4096
+system_prompt: config/system-prompts/infra-agent.md

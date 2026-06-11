@@ -1,0 +1,10 @@
+# config/proxmox.yaml — Proxmox sysadmin profile for local inference stack
+# Loaded by scripts/switch-profile.sh
+# System prompt: config/system-prompts/infra-agent.md (reuses infra agent prompt)
+
+profile: proxmox
+model: qwen2.5-coder:3b
+temperature: 0.2
+context_length: 4096
+system_prompt: config/system-prompts/infra-agent.md
+rag_index: rag-index/proxmox  # RAG index with Proxmox/infra documentation

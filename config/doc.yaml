@@ -1,0 +1,9 @@
+# config/doc.yaml — Documentation agent profile for local inference stack
+# Loaded by scripts/switch-profile.sh
+# System prompt: config/system-prompts/documentation.md
+
+profile: doc
+model: qwen2.5-coder:3b
+temperature: 0.4
+context_length: 4096
+system_prompt: config/system-prompts/documentation.md
