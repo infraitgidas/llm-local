@@ -56,7 +56,7 @@ run_indexer() {
 
     mkdir -p "$RAG_DIR"
 
-    python3 <<'PYEOF'
+    python3 - "$docs_dir" "$RAG_DIR" "$update_mode" <<'PYEOF'
 import json, os, sys, hashlib, re, math, time, urllib.request, urllib.error
 
 docs_dir = sys.argv[1]
@@ -170,6 +170,14 @@ def needs_update(filepath, existing_entries):
                 return False
     return True
 
+# Helper function for glob
+def glob(base_dir, pattern):
+    """Simple glob by extension"""
+    import pathlib
+    p = pathlib.Path(base_dir)
+    ext = pattern.lstrip('*')
+    return [str(f) for f in p.rglob(f'*{ext}') if f.is_file()]
+
 # Main indexing logic
 index_name = os.path.basename(docs_dir.rstrip('/'))
 index_path = os.path.join(rag_dir, f"{index_name}.json")
@@ -271,15 +279,7 @@ print(f"  Total chunks:   {len(all_entries)}")
 print(f"  New chunks:     {len(new_entries)}")
 print(f"  Kept chunks:    {len(kept_entries)}")
 
-# Helper function for glob
-def glob(base_dir, pattern):
-    """Simple glob by extension"""
-    import pathlib
-    p = pathlib.Path(base_dir)
-    ext = pattern.lstrip('*')
-    return [str(f) for f in p.rglob(f'*{ext}') if f.is_file()]
-
-PYEOF "$docs_dir" "$RAG_DIR" "$update_mode"
+PYEOF
 }
 
 # Main

@@ -32,13 +32,14 @@ run_query() {
     local index_name="$2"
     local raw_output="${3:-false}"
 
-    python3 <<'PYEOF'
+    # Build args: need to pass query as separate arg, use - for stdin
+    python3 - "$index_name" "$RAG_DIR" "$raw_output" "$query" <<'PYEOF'
 import json, math, sys, urllib.request, urllib.error, os
 
-query = sys.argv[1]
-index_name = sys.argv[2]
-rag_dir = sys.argv[3]
-raw_output = sys.argv[4].lower() == 'true'
+index_name = sys.argv[1]
+rag_dir = sys.argv[2]
+raw_output = sys.argv[3].lower() == 'true'
+query = sys.argv[4]
 
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
 MODEL = "nomic-embed-text"
@@ -160,7 +161,7 @@ else:
             print(f"{display_text}")
             print()
 
-PYEOF "$query" "$index_name" "$RAG_DIR" "$raw_output"
+PYEOF
 }
 
 list_indexes() {
