@@ -41,12 +41,12 @@ Chain strategy: pending
 
 ## Phase 3: Multi-model + RAG
 
-- [ ] T10: Create `scripts/model-download.sh` + download Qwen2.5-Coder-3B Q5_K_M con resume
-- [ ] T11: Create `config/infra.yaml`, `config/doc.yaml`, `config/proxmox.yaml` + system prompts
-- [ ] T12: Create `scripts/rag-import.sh` + `scripts/rag-query.sh` — nomic-embed + sqlite-vss pipeline
-- [ ] T13: Index Proxmox/infra docs — verificar query con pasajes citados
-- [ ] T14: Create `scripts/switch-profile.sh` + `scripts/quantize.sh` + `config/model-registry.yaml` — swap 1.5B↔3B↔nomic sin OOM
-- [ ] T15: Final benchmark — todos los perfiles, RAM<85%, VRAM<4GB, todos los escenarios de spec
+- [x] T10: Create `scripts/model-download.sh` + download Qwen2.5-Coder-3B Q5_K_M con resume
+- [x] T11: Create `config/infra.yaml`, `config/doc.yaml`, `config/proxmox.yaml` + system prompts
+- [x] T12: Create `scripts/rag-import.sh` + `scripts/rag-query.sh` — nomic-embed + sqlite-vss pipeline
+- [x] T13: Index Proxmox/infra docs — verificar query con pasajes citados
+- [x] T14: Create `scripts/switch-profile.sh` + `scripts/quantize.sh` + `config/model-registry.yaml` — swap 1.5B↔3B↔nomic sin OOM
+- [x] T15: Final benchmark — todos los perfiles, RAM<85%, VRAM<4GB, todos los escenarios de spec
 
 ### Dependency Graph
 
